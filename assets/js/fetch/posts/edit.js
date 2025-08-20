@@ -36,16 +36,25 @@ async function loadArticleForEdit() {
 
 
 
+// if button publish clicked set status to publish
 document.querySelector(".btn-publish").addEventListener("click", () => {
     document.getElementById("status").value = "publish";
 });
 
+// if button draft clicked set status to draft
 document.querySelector(".btn-draft").addEventListener("click", () => {
     document.getElementById("status").value = "draft";
 });
+
+// if form submitted
 form.addEventListener('submit', async (e) => {
     e.preventDefault();
     
+    // kosongkan error
+    document.getElementById("error-title").innerText = "";
+    document.getElementById("error-content").innerText = "";
+    document.getElementById("error-category").innerText = "";
+
     // siapkan data
     const data = {
         title: form.title.value,
@@ -54,15 +63,25 @@ form.addEventListener('submit', async (e) => {
         status: form.status.value
     }
     
-    // error handling
-    if (!data.title || !data.content || !data.category || !data.status) {
-        alert("Please fill all fields");
-        return;
-    }
 
     // create article
     const response = await updateArticle(getArticleIdFromUrl(), data);
     
+
+    // error handling
+    if (response.errors) {
+        if (response.errors.title) {
+            document.getElementById("error-title").innerText = response.errors.title[0];
+        }
+        if (response.errors.content) {
+            document.getElementById("error-content").innerText = response.errors.content[0];
+        }
+        if (response.errors.category) {
+            document.getElementById("error-category").innerText = response.errors.category[0];
+        }
+        return;
+    }
+
     // tampilkan pesan
     alert(response.message);
     window.location.href = "index.html";
