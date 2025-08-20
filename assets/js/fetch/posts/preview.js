@@ -3,7 +3,7 @@ async function loadPreview(page = 1, limit = 6) {
     const data = await getArticles(limit, (page - 1) * limit);
 
     // filter hanya yang statusnya hanya publish
-    const data_filtered = data.articles.filter(post => post.status.toLowerCase() === "publish");
+    const data_filtered = data.articles.filter(post => post.status.toLowerCase() == "publish");
 
     // get element container list article
     const list = document.getElementById("preview-article");
