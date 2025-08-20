@@ -15,6 +15,7 @@ async function loadArticleForEdit() {
     // check article id
     if (!articleId) {
         alert('Something went wrong');
+        window.location.href = "index.html";
         return;
     }
 

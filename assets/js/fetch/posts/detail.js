@@ -12,6 +12,7 @@ async function loadArticleForDetail() {
     // check article id
     if (!articleId) {
         alert('Something went wrong');
+        window.location.href = "preview.html";
         return;
     }
 

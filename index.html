@@ -162,9 +162,9 @@
                   <div class="card-body">
                      <!-- Tabs -->
                     <div class="tabs">
-                      <button onclick="load_posts('publish')" class="btn btn-outline-primary rounded-5 mx-2 mb-2">Published</button>
-                      <button onclick="load_posts('draft')" class="btn btn-outline-primary rounded-5 mx-2 mb-2">Drafts</button>
-                      <button onclick="load_posts('thrash')" class="btn btn-outline-primary rounded-5 mx-2 mb-2">Thrashed</button>
+                      <button onclick="load_posts('publish')" data-filter="publish" class="btn btn-outline-primary btn-filter rounded-5 mx-2 mb-2">Published</button>
+                      <button onclick="load_posts('draft')" data-filter="draft" class="btn btn-outline-primary btn-filter rounded-5 mx-2 mb-2">Drafts</button>
+                      <button onclick="load_posts('thrash')" data-filter="thrash" class="btn btn-outline-primary btn-filter rounded-5 mx-2 mb-2">Thrashed</button>
                     </div>
                     <hr>
                     <div class="table-responsive">

@@ -1,5 +1,24 @@
 const api_url = "http://localhost:8000/api";
 
+// check server
+function checkServer(url, timeout = 5000) {
+    const timeoutPromise = new Promise((_, reject) => {
+        setTimeout(() => reject(new Error('timeout')), timeout);
+    });
+
+    const fetchPromise = fetch(url, { method: 'GET', mode: 'no-cors' });
+
+    Promise.race([fetchPromise, timeoutPromise])
+    .then(() => {
+        console.log(('Server OK'));
+    })
+    .catch(() => {
+        alert('Server Not Respond | Check Your Connection');
+    });
+}
+checkServer('http://localhost:8000/');
+
+
 // get articles
 async function getArticles(limit = 10, offset = 0) {
     const response = await fetch(`${api_url}/article/${limit}/${offset}`);
