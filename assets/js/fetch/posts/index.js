@@ -4,13 +4,24 @@ async function load_posts(status) {
     const data = await getArticles(500, 0);
     
     // filter data
-    const data_filtered = data.articles.filter(post => post.status.toLowerCase() === status);
+    const data_filtered = data.articles.filter(post => post.status.toLowerCase() == status);
     
-    // display data
+
+    // button  tabs active
+    const buttons = document.querySelectorAll('.btn-filter');
+    buttons.forEach(button => {
+        if (button.getAttribute('data-filter') == status) {
+            button.classList.replace('btn-outline-primary', 'btn-primary');
+        } else {
+           button.classList.replace('btn-primary', 'btn-outline-primary');
+        }
+    })
+
+    // get element container list article
     const posts_list = document.getElementById('posts-list');
     posts_list.innerHTML = "";
 
-    // display filtered data
+    // render artikel ke dalam container list article
     data_filtered.forEach(post => {
         const post_html = `
             <tr>

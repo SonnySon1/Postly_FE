@@ -3,7 +3,7 @@ async function loadPreview(page = 1, limit = 6) {
     const data = await getArticles(limit, (page - 1) * limit);
 
     // filter hanya yang statusnya hanya publish
-    const data_filtered = data.articles.filter(post => post.status.toLowerCase() === "publish");
+    const data_filtered = data.articles.filter(post => post.status.toLowerCase() == "publish");
 
     // get element container list article
     const list = document.getElementById("preview-article");
@@ -22,9 +22,12 @@ async function loadPreview(page = 1, limit = 6) {
                             <h3 class="card-title">
                                 <div>${post.title}</div>
                             </h3>
-                            <p class="card-text">
+                            <p class="card-text text-truncate-3">
                                 ${post.content}
                             </p>
+                            <div class="card-footer px-0">
+                                <a href="${detailPost(post.id)}" class="btn btn-primary">Read More</a>
+                            </div>
                     </div>
                 </div>
             </div>
@@ -52,4 +55,11 @@ function renderPagination(total, currentPage, limit) {
         `;
         pagination.innerHTML += html;
     }
+}
+
+
+
+// detail post
+function detailPost(id) {
+    return `detail.html?id=${id}`;
 }

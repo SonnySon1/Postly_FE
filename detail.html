@@ -2,7 +2,7 @@
 <html lang="en">
   <head>
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <title>Postly - Preview</title>
+    <title>Postly - Detail</title>
     <meta
       content="width=device-width, initial-scale=1.0, shrink-to-fit=no"
       name="viewport"
@@ -147,14 +147,14 @@
             <div class="d-flex align-items-left align-items-md-center flex-column flex-md-row pt-2 pb-4">
               <div>
                 <h3 class="fw-bold mb-3">Preview</h3>
-                <h6 class="op-7 mb-2">Preview Articles</h6>
+                <h6 class="op-7 mb-2">Preview Detail Articles</h6>
+              </div>
+              <div class="ms-md-auto py-2 py-md-0">
+                <a href="preview.html" class="btn btn-outline-primary btn-round">Back</a>
               </div>
             </div>
             <div class="row" id="preview-article">
-            
-            </div>
-            <div class="d-flex justify-content-center">
-                <ul class="pagination gap-1 pg-primary" id="pagination"></ul>
+                
             </div>
           </div>
         </div>
@@ -173,10 +173,11 @@
 
 
 
-
+    <!-- api get posts -->
     <script src="assets/js/fetch/api.js"></script>
-    <script src="assets/js/fetch/posts/preview.js"></script>
-    <script>loadPreview();</script>
+    <script src="assets/js/fetch/posts/detail.js"></script>
+    <script>document.addEventListener("DOMContentLoaded", loadArticleForDetail);</script>
+
    <!--   Core JS Files   -->
     <script src="assets/js/core/jquery-3.7.1.min.js"></script>
     <script src="assets/js/core/popper.min.js"></script>
